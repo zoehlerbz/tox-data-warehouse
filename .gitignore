@@ -1,0 +1,33 @@
+# Secrets
+.env
+dataset-metadata.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# VSCode
+.vscode/
+
+# Data (ignora tudo, mas mantém estrutura)
+data/**
+!data/**/
+!data/**/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints
+
+# Misc
+*.log
+*.tmp
+.DS_Store
+diagrama.drawio
+passo-a-passo.md
+test_lab
