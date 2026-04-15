@@ -67,6 +67,8 @@ class GoldPipeline:
         )
         loader.load_gold(kaggle_df)
 
+        print(f'File path Kaggle: {loader.get_file_path()}')
+
         # Etapa 3: Publicação no Kaggle
         kaggle_api = LoadKaggleDataset(
             loader.get_file_path(),

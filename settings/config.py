@@ -3,8 +3,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# status de run
+TESTE = bool(os.getenv('TEST'))
+
 # kaggle
-KAGGLE_DATASET = os.getenv('KAGGLE_DATASET')
+if not TESTE:
+    KAGGLE_DATASET = os.getenv('KAGGLE_DATASET')
+else:
+    KAGGLE_DATASET = os.getenv('KAGGLE_DATASET_TEST')
 
 # file path
 BRONZE_PATH = './data/bronze/'

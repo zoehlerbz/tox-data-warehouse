@@ -4,9 +4,11 @@ import json
 from datetime import datetime
 from typing import Optional
 
+from settings.config import TESTE
+
 class LoadFileBase:
     def __init__(self, base_path: str, source: str, entity: str, layer: str, version: str, file_format: str, subfolder_gold: Optional[str] = None) -> None:
-        self.base_path = base_path
+        self.base_path = base_path if not TESTE else os.path.join(base_path, 'test')
         self.source = source
         self.entity = entity
         self.layer = layer

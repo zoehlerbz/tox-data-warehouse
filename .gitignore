@@ -30,4 +30,4 @@ data/**
 .DS_Store
 diagrama.drawio
 passo-a-passo.md
-test_lab
+*.ipynb

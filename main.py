@@ -5,7 +5,7 @@ from src.pipelines.silver_pipeline import SilverPipeline
 from src.pipelines.gold_pipeline import GoldPipeline
 
 from src.utils import newest_file, next_version
-from settings.config import BRONZE_PATH
+from settings.config import BRONZE_PATH, TESTE
 
 def main():
 
@@ -33,7 +33,7 @@ def main():
     # Marca início do processo de scraping
     extract_start = datetime.now()
 
-    bronze = BronzePipeline(version)
+    bronze = BronzePipeline(version, TESTE)
     id_bronze, tox_bronze = bronze.run()
 
     # Marca fim da extração

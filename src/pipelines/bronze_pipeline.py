@@ -16,16 +16,18 @@ class BronzePipeline:
     nas camadas silver/gold.
     """
     
-    def __init__(self, version: str) -> None:
+    def __init__(self, version: str, run_status: bool) -> None:
 
         """
         Inicializa o pipeline bronze.
 
         Args:
             version (str): Versão da carga de dados (controle de versionamento/partição).
+            run_status (bool): Define se a execução é para teste. Se 'True', limita os dados em 20 cids.
         """
 
         self.version = version
+        self.run_status = run_status
 
     def run(self):
 
@@ -48,6 +50,10 @@ class BronzePipeline:
         with ScraperIdentification() as scraper:
             # Coleta dados de identificação dos compostos
             id_data = scraper.get_compounds_id()
+
+            # Limita o número de dados em caso de teste
+            if self.run_status:
+                id_data = id_data[:20]
 
             # Armazena dados brutos de identificação
             id_loader = LoadBronze(

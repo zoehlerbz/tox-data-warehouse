@@ -7,6 +7,8 @@ import pandas as pd
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
+from settings.config import KAGGLE_DATASET
+
 class LoadKaggleDataset:
 
     def __init__(self, dataset_path: str, version: str, extract_start, extract_end) -> None:
@@ -43,7 +45,7 @@ class LoadKaggleDataset:
         return os.path.dirname(dataset_path)
 
     def _get_metadata(self):
-        kaggle.api.dataset_metadata('bzoehler/teste-data-warehouse', path=self.dir_path)
+        kaggle.api.dataset_metadata(KAGGLE_DATASET, path=self.dir_path)
 
     def _update_last_release(self):
         try:
