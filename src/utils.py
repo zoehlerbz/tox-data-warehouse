@@ -1,5 +1,7 @@
 import re
 import json
+import glob
+import pandas as pd
 from io import StringIO
 from pathlib import Path
 
@@ -17,6 +19,7 @@ def newest_file(path: str, file_format: str = 'json'):
     )
 
     return file.name if file else None
+
 def next_version(filename: str):
     match = re.search(r'v_(\d+_\d+_\d+)', filename)
 
@@ -52,3 +55,28 @@ def jsonl_to_json(text):
                 data.append(json.loads(line))
 
     return data
+
+def merge_json(json_dir: str):
+    '''
+    Junta arquivos .json em uma única dataframe.
+
+    Params:
+        json_dir: caminho relativo do diretório onde os arquivos .json baixados manualmente estão armazenados.
+            Formato: folder/folder/version/*.json
+    '''
+    lista_dfs = []
+
+    try:
+        # loop pelos arquivos
+        for file in glob.glob(json_dir):
+            with open(file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                df = pd.DataFrame(data)
+                lista_dfs.append(df)
+    except Exception as exc:  # Alguns arquivos vem formatados de forma errada. Com isso, é possível identificar quais são e corrigir manualmente.
+        print(f'Erro em {file}. \n{exc}\n')
+
+    # juntar tudo em um único DataFrame
+    unique_json = pd.concat(lista_dfs, ignore_index=True)
+
+    return unique_json

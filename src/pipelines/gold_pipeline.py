@@ -1,6 +1,7 @@
 from src.transform.transformer_gold import TransformerGold
 from src.load.load_gold import LoadGold
 from src.load.load_kaggle import LoadKaggleDataset
+from src.load.load_database import LoadDatabase
 
 class GoldPipeline:
 
@@ -77,3 +78,10 @@ class GoldPipeline:
             extract_end
         )
         kaggle_api.load_kaggle()
+
+        # Etapa 4: Carrega o banco de dados PostgreSQL
+        database = LoadDatabase(
+            silver_id_path=id_path,
+            silver_tox_path=tox_path
+        )
+        database.load_database()

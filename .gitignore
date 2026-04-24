@@ -29,5 +29,8 @@ data/**
 *.tmp
 .DS_Store
 diagrama.drawio
-passo-a-passo.md
+*.bkp
+*.dtmp
 *.ipynb
+passo-a-passo.md
+manual.py

@@ -67,10 +67,14 @@ data/silver/.../silver_pubchem_tox_v_X_X_X.json
 
 ---
 
-### 4. 📊 Geração do Dataset Final
+### 4. 🥇 Camada Gold (Dados Prontos para Consumo)
 
-* Junção e filtragem dos dados
-* Exportação para CSV
+* Junção e modelagem final dos dados
+* Estruturação em formato analítico utilizando modelo dimensional (star schema)
+  * tabela fato de toxicidade
+  * dimensões como composto, organismo, rota, ensaio, unidade...
+* Persistência dos dados em banco (camada Gold) para consumo por ferramentas analíticas, dashboards ou modelos de machine learning
+* Exportação para CSV para consumo via Kaggle API
 
 📦 Saída:
 

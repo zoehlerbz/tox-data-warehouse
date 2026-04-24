@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # status de run
-TESTE = bool(os.getenv('TEST'))
+TESTE = bool(os.getenv('TEST') != '0')  # se .env TEST=1, roda o script como teste
 
 # kaggle
 if not TESTE:
@@ -20,6 +20,13 @@ GOLD_PATH = './data/gold/'
 # pubchem
 CLASSIFICATION_BASE_URL = 'https://pubchem.ncbi.nlm.nih.gov/classification/cgi/classifications.fcgi'  # url base para obter cache key
 ACUTE_EFFECTS_BASE_URL = 'https://pubchem.ncbi.nlm.nih.gov/sdq/sphinxql.cgi?infmt=json&outfmt=jsonl&query='  # url base para obter lista de compostos com Acute Effect --> arquivo JSONL
+
+# postgresql
+DB_NAME = os.getenv('DB_NAME')
+DB_USER = os.getenv('DB_USER')
+DB_PASS = os.getenv('DB_PASS')
+DB_HOST = os.getenv('DB_HOST')
+DB_PORT = os.getenv('DB_PORT')
 
 # version
 MAJOR = 1

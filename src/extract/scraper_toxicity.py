@@ -42,7 +42,7 @@ class ScraperToxicity(ScraperBase):
         toxicity_data = []   # Armazena dados válidos de toxicidade
         errors = []  # Armazena erros por CID
 
-        for cid in cids:
+        for i, cid in enumerate(cids, start=1):
 
             # Pequeno delay para evitar rate limiting / bloqueio da API
             time.sleep(0.35)
